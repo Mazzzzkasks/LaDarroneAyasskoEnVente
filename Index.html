@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaDarroneAyasskoEnVente</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        header {
+            background-color: #222;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+        main {
+            padding: 1rem;
+        }
+        .produits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .produit {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 1rem;
+            text-align: center;
+            width: 250px;
+        }
+        .produit img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .prix {
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        section {
+            margin-top: 2rem;
+        }
+        #panier {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #777;
+            margin-top: 2rem;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>LaDarroneAyasskoEnVente</h1>
+        <p>Boutiqur pour la vente d'humain con.</p>
+    </header>
+
+    <main>
+        <div class="produits">
+            <div class="produit">
+                <img src="https://raw.githubusercontent.com/tonpseudo/LaDarroneAyasskoEnVente/main/photo1.jpg" alt="Produit A">
+                <p class="prix">3720 €</p>
+                <button onclick="ajouterPanier('Soeur a Yassko', 3720)">Ajouter au panier</button>
+            </div>
+            <div class="produit">
+                <img src="https://raw.githubusercontent.com/tonpseudo/LaDarroneAyasskoEnVente/main/photo3.jpg" alt="Produit B">
+                <p class="prix">2500 €</p>
+                <button onclick="ajouterPanier('Yassko le rappeur con', 2500)">Ajouter au panier</button>
+            </div>
+        </div>
+
+        <section id="apropos">
+            <h2>À propos</h2>
+            <p>Si vous voulez des informations concernant le produit ou vous avez pas bien compris ajoutez nz0.16 sur snap. Cordialement Defaut.
+            </p>
+        </section>
+
+        <section id="panier">
+            <h2>Panier</h2>
+            <button onclick="viderPanier()">Vider</button>
+            <ul id="listePanier"></ul>
+            <p id="total">Total : 0 €</p>
+            <button onclick="alert('Commande passée !')">Commander</button>
+        </section>
+    </main>
+
+    <footer>
+        © 2025 Momow le gros porc sa pute de meuf wafaa elle est wanted pour toute information sur wafaa ou DVM MOMOW on paye 100€ contactez nz0.16 pour cela.
+    </footer>
+
+    <script>
+        let panier = [];
+        function ajouterPanier(nom, prix) {
+            panier.push({ nom, prix });
+            afficherPanier();
+        }
+        function afficherPanier() {
+            let liste = document.getElementById('listePanier');
+            let total = 0;
+            liste.innerHTML = '';
+            panier.forEach((item, index) => {
+                let li = document.createElement('li');
+                li.textContent = item.nom + ' - ' + item.prix + ' €';
+                liste.appendChild(li);
+                total += item.prix;
+            });
+            document.getElementById('total').textContent = 'Total : ' + total + ' €';
+        }
+        function viderPanier() {
+            panier = [];
+            afficherPanier();
+        }
+    </script>
+</body>
+</html>
